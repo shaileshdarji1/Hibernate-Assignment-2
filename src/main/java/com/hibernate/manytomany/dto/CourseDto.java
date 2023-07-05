@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,4 +21,6 @@ public class CourseDto {
     private int modules;
     @NotBlank(message = "fee not blank")
     private double fee;
+
+    List<StudentDto> studentDtoList;
 }

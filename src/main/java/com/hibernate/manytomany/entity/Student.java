@@ -22,7 +22,10 @@ public class Student {
     private Integer id;
     private String studentName;
     private Integer age;
-    String department;
+
+    @ManyToOne
+    @JoinColumn(name = "dept_id",referencedColumnName = "id")
+    Department department;
 
 
     @ManyToMany(cascade = CascadeType.ALL)

@@ -19,10 +19,7 @@ public class StudentDto {
     @Max(100)
     private Integer age;
 
+    List<CourseDto> courses;
     @NotNull
-    String department;
-
-    @NotNull
-    @Size(min = 1)
-    List<CourseDto> courseDtos;
+    DepartmentDto department;
 }

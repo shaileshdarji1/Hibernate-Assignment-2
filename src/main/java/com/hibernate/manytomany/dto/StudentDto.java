@@ -1,5 +1,6 @@
 package com.hibernate.manytomany.dto;
 
+import com.hibernate.manytomany.annotation.ValidateDepartment;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -20,6 +21,8 @@ public class StudentDto {
     private Integer age;
 
     List<CourseDto> courses;
+
     @NotNull
+    @Valid
     DepartmentDto department;
 }

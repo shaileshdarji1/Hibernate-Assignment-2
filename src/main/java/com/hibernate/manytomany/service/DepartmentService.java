@@ -12,5 +12,7 @@ public interface DepartmentService {
 
     public List<DepartmentDto> getDepartments();
 
+    public void deleteDepartment(Integer id);
 
+    public DepartmentDto updateDepartment(DepartmentDto departmentDto,Integer id);
 }

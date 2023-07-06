@@ -8,6 +8,7 @@ import com.hibernate.manytomany.repository.StudentRepository;
 import com.hibernate.manytomany.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     MapStructMapper mapStructMapper;
+
     @Override
     public StudentDto addStudent(StudentDto studentDto) {
         Student student = mapStructMapper.dtoToStudent(studentDto);
@@ -45,7 +47,7 @@ public class StudentServiceImpl implements StudentService {
         if(student!=null){
         student = mapStructMapper.dtoToStudent(studentDto);
         student.setId(id);
-        log.info(studentDto.toString());
+        log.info("Student Record Fetch Successfully");
         return mapStructMapper.studentToDto(studentRepository.save(student));
         }
         else{
@@ -64,7 +66,7 @@ public class StudentServiceImpl implements StudentService {
     public StudentDto findStudentById(Integer id) {
         Optional<Student> student = studentRepository.findById(id);
         if(student.isPresent()){
-            log.info(student.toString());
+            log.info("Student Record Fetch Successfully");
             return mapStructMapper.studentToDto(student.get());
         }
         else {

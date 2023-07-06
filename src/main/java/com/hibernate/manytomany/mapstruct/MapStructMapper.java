@@ -2,8 +2,10 @@ package com.hibernate.manytomany.mapstruct;
 
 import com.hibernate.manytomany.constants.Constant;
 import com.hibernate.manytomany.dto.CourseDto;
+import com.hibernate.manytomany.dto.DepartmentDto;
 import com.hibernate.manytomany.dto.StudentDto;
 import com.hibernate.manytomany.entity.Course;
+import com.hibernate.manytomany.entity.Department;
 import com.hibernate.manytomany.entity.Student;
 import org.mapstruct.Mapper;
 
@@ -16,4 +18,7 @@ public interface MapStructMapper {
 
     public Student dtoToStudent(StudentDto studentDto);
     public StudentDto studentToDto(Student student);
+
+    public Department dtoToDepartment(DepartmentDto departmentDto);
+    public DepartmentDto departmentToDto(Department department);
 }

@@ -21,6 +21,4 @@ public class CourseDto {
     private int modules;
     @NotBlank(message = "fee not blank")
     private double fee;
-
-    List<StudentDto> studentDtoList;
 }

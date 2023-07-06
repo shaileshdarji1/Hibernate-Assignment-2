@@ -1,5 +1,6 @@
 package com.hibernate.manytomany.controller;
 
+import com.hibernate.manytomany.constants.Constant;
 import com.hibernate.manytomany.dto.StudentDto;
 import com.hibernate.manytomany.entity.Student;
 import com.hibernate.manytomany.service.StudentService;
@@ -8,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import static com.hibernate.manytomany.constants.Constant.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/students")
+@RequestMapping(STUDENTS)
 public class StudentController {
 
     @Autowired
@@ -28,18 +29,18 @@ public class StudentController {
         return new ResponseEntity<>(studentService.addStudent(studentDto),HttpStatus.OK);
     }
 
-    @GetMapping("/{studentId}")
-    public ResponseEntity<StudentDto> getStudent(@PathVariable("studentId") Integer id){
+    @GetMapping(PATH_STUDENT_ID)
+    public ResponseEntity<StudentDto> getStudent(@PathVariable Integer id){
         return new ResponseEntity<>(studentService.findStudentById(id),HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping(UPDATE_STUDENT)
     public ResponseEntity<StudentDto> update(@RequestBody @Valid StudentDto studentDto,@PathVariable Integer id){
         return new ResponseEntity<>(studentService.updateStudent(studentDto,id),HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteStudent(@PathVariable("id") Integer id){
+    @DeleteMapping(DELETE_STUDENT)
+    public ResponseEntity<String> deleteStudent(@PathVariable Integer id){
         try {
           studentService.deleteStudent(id);
           return new ResponseEntity<>("Student Delete Successfully",HttpStatus.OK);

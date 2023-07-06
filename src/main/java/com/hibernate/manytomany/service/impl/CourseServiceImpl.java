@@ -6,7 +6,10 @@ import com.hibernate.manytomany.exception.CourseNotFoundException;
 import com.hibernate.manytomany.mapstruct.MapStructMapper;
 import com.hibernate.manytomany.repository.CourseRepository;
 import com.hibernate.manytomany.service.CourseService;
+import jakarta.persistence.Cacheable;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,7 +50,7 @@ public class CourseServiceImpl implements CourseService {
         if(course!=null) {
             course = mapStructMapper.dtoToCourse(courseDto);
             course.setId(id);
-            log.info(courseDto.toString());
+            log.info("Course Record Update Successfully");
             return mapStructMapper.courseToDto(courseRepository.save(course));
         }
         else{
@@ -67,7 +70,7 @@ public class CourseServiceImpl implements CourseService {
     public CourseDto findCourseById(Integer id) {
         Optional<Course> course = courseRepository.findById(id);
         if (course.isPresent()){
-            log.info(course.toString());
+            log.info("Course Record Fetch Successfully");
         return mapStructMapper.courseToDto(course.get());
         }
         else{

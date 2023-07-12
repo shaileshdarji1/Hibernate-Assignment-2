@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -23,5 +24,6 @@ public class Department {
     String name;
 
     @OneToMany(mappedBy = "department")
+    @ToString.Exclude
     List<Student> studentList;
 }

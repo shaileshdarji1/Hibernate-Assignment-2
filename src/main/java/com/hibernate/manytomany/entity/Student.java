@@ -41,5 +41,6 @@ public class Student {
                     @JoinColumn(name = "c_id", referencedColumnName = "id")
             }
     )
+    @ToString.Exclude
     private List<Course> courses;
 }
